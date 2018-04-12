@@ -3,9 +3,13 @@
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
+(require 'powerline)
+(powerline-default-theme)
 (require 'org)
 (require 'org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+(require 'magit)
+(global-set-key (kbd "C-x g") 'magit-status)
 (require 'package)
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
 		    (not (gnutls-available-p))))
@@ -30,7 +34,9 @@
    (quote
     (("melpa" . "http://stable.melpa.org/packages/")
      ("gnu" . "http://elpa.gnu.org/packages/"))))
- '(package-selected-packages (quote (org-bullets nyan-mode solarized-theme evil org)))
+ '(package-selected-packages
+   (quote
+    (powerline magit org-bullets nyan-mode solarized-theme evil org)))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil))
 (custom-set-faces
